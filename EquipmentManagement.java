@@ -1,6 +1,6 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
-//This is the main file
+//This is the main file please go through this once
 public class EquipmentManagement {
     public static void main(String[] args) {
         Equipments equipments = new Equipments();
