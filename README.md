@@ -1,7 +1,9 @@
 # 🏷 **EquiManage**
 
 ## 📌 **Project Overview**
-**EquiManage** is a **console-based basic project** designed to help users **issue, return, and manage equipment** efficiently. The system ensures seamless tracking of issued items and maintains records of available equipment.
+**EquiManage** is a **dedicated console-based application** designed to help users **issue, return, and manage equipment** efficiently. The system ensures seamless tracking of issued items and maintains records of available equipment.
+
+In scenarios like an **electronics lab**, the **instructor (seller)** issues gadgets to students and records the entry through this program. Students can then check information about **available gadgets, issued gadgets, and gadgets assigned to them**.
 
 ### 🚀 **Key Features**
 - **Equipment Issuance & Return:** Users can issue and return equipment with a structured process.
@@ -36,7 +38,7 @@
 
 ## 🔧 **Use Cases**
 EquiManage can be used in various fields where equipment management is required:
-- **Electronics Labs:** Manage lab equipment availability and ensure proper tracking of borrowed tools.
+- **Electronics Labs:** Instructors issue lab equipment to students and track their usage.
 - **Construction Sites:** Keep track of heavy machinery and tools assigned to workers.
 - **University Labs:** Help students and staff manage lab equipment usage efficiently.
 - **Event Management:** Maintain records of rented equipment for events and conferences.
