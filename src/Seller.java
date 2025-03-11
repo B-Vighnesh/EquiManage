@@ -1,5 +1,3 @@
-package service;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -60,7 +58,7 @@ public void logout(){
         login();
         int choice;
         do {
-            System.out.println("\n--- service.Seller Menu ---");
+            System.out.println("\n--- Seller Menu ---");
             System.out.println("1. View All Products");
             System.out.println("2. View Available Products");
             System.out.println("3. View Issued Products");

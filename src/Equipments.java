@@ -1,5 +1,3 @@
-package service;
-
 public class Equipments {
     int itemId = 0;
     String[] itemName = new String[100];

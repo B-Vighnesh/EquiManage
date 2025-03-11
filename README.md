@@ -9,15 +9,15 @@ In scenarios like an **electronics lab**, the **instructor (seller)** issues gad
 - **Equipment Issuance & Return:** Users can issue and return equipment with a structured process.
 - **Inventory Management:** Tracks available and in-use equipment.
 - **Authentication:** Basic login mechanism for users.
-- **service.Token System:** Uses tokens to manage equipment transactions securely.
+- **Token System:** Uses tokens to manage equipment transactions securely.
 
 ---
 
 ## 🏷 **Project Structure**
-- **`main.EquipmentManagement.java`** - The main class handling the overall flow of the system.
+- **`EquipmentManagement.java`** - The main class handling the overall flow of the system.
 - **`User.java`** - Manages user registrations, logins, and interactions.
 - **`Equipment.java`** - Maintains the list of available equipment and their details.
-- **`service.Token.java`** - Generates unique transaction tokens for tracking.
+- **`Token.java`** - Generates unique transaction tokens for tracking.
 
 ---
 
@@ -29,8 +29,8 @@ In scenarios like an **electronics lab**, the **instructor (seller)** issues gad
    ```
 2. **Compile and Run**
    ```sh
-   javac main.EquipmentManagement.java
-   java main.EquipmentManagement
+   javac EquipmentManagement.java
+   java EquipmentManagement
    ```
 3. **Follow the console prompts** to login and interact with the system.
 

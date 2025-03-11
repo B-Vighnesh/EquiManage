@@ -1,7 +1,3 @@
-package main;
-import service.Buyer;
-import service.Equipments;
-import service.Seller;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
