@@ -18,9 +18,9 @@ public class EquipmentManagement {
         SellerDAO sellerDAO = new SellerDAO();
         while (true) {
             System.out.println("Welcome to Equipment Management System!");
-            System.out.println("1. Register as Buyer");
-            System.out.println("2. Login as Buyer");
-            System.out.println("3. Login as Seller");
+            System.out.println("1. Register as Student");
+            System.out.println("2. Login as Student");
+            System.out.println("3. Login as Attendent");
             System.out.println("4. Exit");
 
             int choice = scanner.nextInt();

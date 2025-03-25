@@ -1,59 +1,119 @@
 # 🏷 **EquiManage**
 
 ## 📌 **Project Overview**
-**EquiManage** is a **dedicated console-based application** designed to help users **issue, return, and manage equipment** efficiently. The system ensures seamless tracking of issued items and maintains records of available equipment.
-
-In scenarios like an **electronics lab**, the **instructor (seller)** issues gadgets to students and records the entry through this program. Students can then check information about **available gadgets, issued gadgets, and gadgets assigned to them**.
+**EquiManage** is a **JDBC-based Java application** that provides a structured system for **issuing, returning, and managing equipment** in environments such as university labs, electronics labs, and research centers. The system facilitates **student-lab attendant interactions** by maintaining detailed records of available and rented equipment.
 
 ### 🚀 **Key Features**
-- **Equipment Issuance & Return:** Users can issue and return equipment with a structured process.
-- **Inventory Management:** Tracks available and in-use equipment.
-- **Authentication:** Basic login mechanism for users.
-- **util.Token System:** Uses tokens to manage equipment transactions securely.
+- **Equipment Issuance & Return:** Tracks issued equipment with timestamps.
+- **Inventory Management:** Ensures accurate records of available and rented equipment.
+- **User Authentication:** Supports login for buyers (students) and sellers (lab attendants).
+- **Token System:** Generates transaction tokens for each issued equipment.
+- **Database Integration:** Uses **MySQL** for storing users, equipment, and transaction logs.
+- **Automated Availability Updates:** Uses a database trigger to update equipment status upon issuance.
 
 ---
 
-## 🏷 **Project Structure**
-- **`main.EquipmentManagement.java`** - The main class handling the overall flow of the system.
-- **`User.java`** - Manages user registrations, logins, and interactions.
-- **`Equipment.java`** - Maintains the list of available equipment and their details.
-- **`util.Token.java`** - Generates unique transaction tokens for tracking.
+## 📚 **Project Structure**
+- **`Main.java`** - Entry point of the application.
+- **`DatabaseConnector.java`** - Establishes and manages database connections.
+- **`User.java`** - Handles buyer registration and login.
+- **`Seller.java`** - Manages lab attendants (sellers) and equipment records.
+- **`Equipment.java`** - Represents the equipment inventory.
+- **`IssueList.java`** - Tracks issued equipment and return status.
 
 ---
 
-## 🛠️ **Setup & Execution**
-1. **Clone the repository**
+## 🛠 **Setup & Execution**
+
+### **1. Database Setup**
+Ensure you have **MySQL** installed and set up your database with the following commands:
+```sql
+CREATE DATABASE equimanage;
+USE equimanage;
+
+CREATE TABLE Buyers (
+    buyer_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    role VARCHAR(50) NOT NULL
+) AUTO_INCREMENT = 1001;
+
+CREATE TABLE Equipments (
+    equipment_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    isAvailable BOOLEAN DEFAULT TRUE NOT NULL
+) AUTO_INCREMENT = 1001;
+
+CREATE TABLE Issuelist (
+    issue_id INT PRIMARY KEY AUTO_INCREMENT,
+    buyer_id INT NOT NULL,
+    equipment_id INT NOT NULL,
+    token VARCHAR(100) NOT NULL,
+    issue_date DATETIME DEFAULT NOW(),
+    return_date DATETIME,
+    FOREIGN KEY (buyer_id) REFERENCES buyers(buyer_id) ON DELETE CASCADE,
+    FOREIGN KEY (equipment_id) REFERENCES equipments(equipment_id) ON DELETE CASCADE
+) AUTO_INCREMENT = 1001;
+
+CREATE TRIGGER set_false
+AFTER INSERT ON Issuelist
+FOR EACH ROW
+UPDATE Equipments
+SET isAvailable = FALSE
+WHERE equipment_id = NEW.equipment_id;
+
+CREATE TABLE Sellers (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(100),
+    role VARCHAR(100)
+) AUTO_INCREMENT = 1000;
+```
+
+### **2. Running the Application**
+1. **Clone the Repository**
    ```sh
    git clone https://github.com/B-Vighnesh/EquiManage.git
    cd EquiManage
    ```
-2. **Compile and Run**
+2. **Add MySQL JDBC Driver**
+   - If using IntelliJ IDEA, go to `Project Structure -> Libraries` and add the **MySQL Connector/J**.
+3. **Compile & Run**
    ```sh
-   javac main.EquipmentManagement.java
-   java main.EquipmentManagement
+   javac Main.java
+   java Main
    ```
-3. **Follow the console prompts** to login and interact with the system.
 
 ---
 
-## 🔧 **Use Cases**
-EquiManage can be used in various fields where equipment management is required:
-- **Electronics Labs:** Instructors issue lab equipment to students and track their usage.
-- **Construction Sites:** Keep track of heavy machinery and tools assigned to workers.
-- **University Labs:** Help students and staff manage lab equipment usage efficiently.
-- **Event Management:** Maintain records of rented equipment for events and conferences.
+## 🎨 **User Roles & Functionalities**
+
+### **🎓 Buyer (Student) Features**
+- **Register & Login**
+- **View Available Equipment**
+- **Request Equipment** (Issue & Return)
+- **View Rental History**
+
+### **👨‍💻 Seller (Lab Attendant) Features**
+- **Approve Equipment Issuance & Returns**
+- **Monitor Student Transactions**
+- **Add, Update, and Remove Equipment**
+- **Track Inventory in Real Time**
 
 ---
 
 ## 🔒 **Security Considerations**
-- This is a **basic console-based project**, so it does not use a database or advanced authentication.
-- The project currently **stores credentials in plain text**, which can be a security risk.
-- Consider implementing **hashed passwords** and **database storage** for enhanced security.
+- **Passwords are currently stored in plain text** (consider using hashing for security).
+- **Ensure MySQL permissions are set appropriately** to prevent unauthorized access.
+- **Avoid running SQL queries directly from user inputs** to prevent SQL injection.
 
 ---
 
 ## 📩 **Contact**
-For queries and collaborations, reach out at:  
+For queries or collaboration, reach out at:  
 📧 **vighneshsheregar2004@gmail.com**  
-🔗 [LinkedIn](https://www.linkedin.com/in/b-vighnesh-kumar/)  
+👉 [LinkedIn](https://www.linkedin.com/in/b-vighnesh-kumar/)
 
