@@ -1,32 +1,35 @@
 # 🏷 **EquiManage**
 
-## 📌 **Project Overview**
-**EquiManage** is a **JDBC-based Java application** that provides a structured system for **issuing, returning, and managing equipment** in environments such as university labs, electronics labs, and research centers. The system facilitates **student-lab attendant interactions** by maintaining detailed records of available and rented equipment.
-
-### 🚀 **Key Features**
-- **Equipment Issuance & Return:** Tracks issued equipment with timestamps.
-- **Inventory Management:** Ensures accurate records of available and rented equipment.
-- **User Authentication:** Supports login for buyers (students) and sellers (lab attendants).
-- **Token System:** Generates transaction tokens for each issued equipment.
-- **Database Integration:** Uses **MySQL** for storing users, equipment, and transaction logs.
-- **Automated Availability Updates:** Uses a database trigger to update equipment status upon issuance.
+## 📌 **What is EquiManage?**
+EquiManage is a simple **Java-based equipment management system** that helps track the **issuing, returning, and availability** of lab equipment. It’s designed for places like **university labs, electronics labs, and research centers**, making it easier for students and lab attendants to manage equipment efficiently.
 
 ---
 
-## 📚 **Project Structure**
-- **`Main.java`** - Entry point of the application.
-- **`DatabaseConnector.java`** - Establishes and manages database connections.
-- **`User.java`** - Handles buyer registration and login.
-- **`Seller.java`** - Manages lab attendants (sellers) and equipment records.
-- **`Equipment.java`** - Represents the equipment inventory.
-- **`IssueList.java`** - Tracks issued equipment and return status.
+## 🚀 **What Can EquiManage Do?**
+- **Issue & Return Equipment** – Keep track of who has borrowed what.
+- **Manage Inventory** – Know which equipment is available at any time.
+- **User Login** – Students (buyers) and lab attendants (sellers) have separate accounts.
+- **Token System** – Each borrowed item gets a unique token for tracking.
+- **Database Support** – Uses **MySQL** to store all equipment and user details.
+- **Automatic Updates** – When an item is borrowed, the system automatically updates its availability.
 
 ---
 
-## 🛠 **Setup & Execution**
+## 📚 **How the Project is Structured**
+- **`Main.java`** – The starting point of the application.
+- **`DatabaseConnector.java`** – Connects the app to the database.
+- **`User.java`** – Handles student (buyer) accounts.
+- **`Seller.java`** – Manages lab attendants and equipment records.
+- **`Equipment.java`** – Represents lab equipment.
+- **`IssueList.java`** – Keeps track of borrowed and returned equipment.
 
-### **1. Database Setup**
-Ensure you have **MySQL** installed and set up your database with the following commands:
+---
+
+## 🛠 **How to Set Up & Run**
+
+### **1. Setting Up the Database**
+First, make sure you have **MySQL** installed. Then, run the following commands to set up the database:
+
 ```sql
 CREATE DATABASE equimanage;
 USE equimanage;
@@ -74,13 +77,13 @@ CREATE TABLE Sellers (
 ```
 
 ### **2. Running the Application**
-1. **Clone the Repository**
+1. **Download the Project**
    ```sh
    git clone https://github.com/B-Vighnesh/EquiManage.git
    cd EquiManage
    ```
 2. **Add MySQL JDBC Driver**
-   - If using IntelliJ IDEA, go to `Project Structure -> Libraries` and add the **MySQL Connector/J**.
+   - If you’re using **IntelliJ IDEA**, go to `Project Structure -> Libraries` and add the **MySQL Connector/J**.
 3. **Compile & Run**
    ```sh
    javac Main.java
@@ -89,31 +92,31 @@ CREATE TABLE Sellers (
 
 ---
 
-## 🎨 **User Roles & Functionalities**
+## 🎨 **Who Can Use This?**
 
-### **🎓 Buyer (Student) Features**
-- **Register & Login**
-- **View Available Equipment**
-- **Request Equipment** (Issue & Return)
-- **View Rental History**
+### **🎓 Students (Buyers)**
+- Sign up and log in
+- View available equipment
+- Borrow and return items
+- See rental history
 
-### **👨‍💻 Seller (Lab Attendant) Features**
-- **Approve Equipment Issuance & Returns**
-- **Monitor Student Transactions**
-- **Add, Update, and Remove Equipment**
-- **Track Inventory in Real Time**
-
----
-
-## 🔒 **Security Considerations**
-- **Passwords are currently stored in plain text** (consider using hashing for security).
-- **Ensure MySQL permissions are set appropriately** to prevent unauthorized access.
-- **Avoid running SQL queries directly from user inputs** to prevent SQL injection.
+### **👨‍💻 Lab Attendants (Sellers)**
+- Approve equipment requests
+- Track who has borrowed what
+- Add, update, or remove equipment
+- Monitor inventory in real time
 
 ---
 
-## 📩 **Contact**
-For queries or collaboration, reach out at:  
+## 🔒 **Security Notes**
+- Right now, **passwords are stored as plain text** (you should use hashing for better security).
+- Set **proper MySQL permissions** to keep your data safe.
+- **Avoid SQL injections** by properly handling user inputs.
+
+---
+
+## 📩 **Need Help?**
+If you have any questions or want to collaborate, reach out! 📧
+
 📧 **vighneshsheregar2004@gmail.com**  
 👉 [LinkedIn](https://www.linkedin.com/in/b-vighnesh-kumar/)
-
